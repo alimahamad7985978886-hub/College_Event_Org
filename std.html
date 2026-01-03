@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>students</title>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body,
+        html {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            text-transform: capitalize;
+            width: 100%;
+            height: 100%;
+        }
+
+        #main {
+            width: 100%;
+            height: 100vh;
+            position: relative;
+
+        }
+
+        #logo {
+
+                    width: 100px;
+            height: 60px;
+            border-radius: 10px;
+            background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzeacGA5efvr25z6rR_JyZ3pgrswGDmteedQ&s");
+            background-size: contain;
+            background-repeat: no-repeat;
+
+
+
+        }
+
+        .header {
+            width: 100%;
+            height: 10%;
+            background-color: aquamarine;
+            display: flex;
+            align-items: center;
+            position: fixed;
+        }
+
+        ul {
+            display: flex;
+            list-style-type: none;
+            color: black;
+            gap: 110px;
+        }
+
+        ul li:first-child {
+            margin-left: 150px;
+        }
+
+        ul li {
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        ul li:hover {
+            background-color: antiquewhite;
+        }
+
+        #text-contain {
+            width: 100%;
+            height: 90%;
+            background-color: yellowgreen;
+            color: white;
+            position: absolute;
+            top: 10%;
+            left: 0;
+            transform: translateX(-100%);
+            transition: transform 0.8s ease-in-out;
+        }
+
+        #text-contain.evnt {
+            transform: translateX(0);
+        }
+
+        #text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 70vh;
+            gap: 10px;
+        }
+
+        .heading {
+            padding: 10px;
+            margin: 10px;
+            font-size: larger;
+            width: 300px;
+            border-radius: 20px;
+        }
+
+        .heading:hover {
+            background-color: yellow;
+        }
+
+        #about {
+            width: 100%;
+            height: 90%;
+            background-color: brown;
+            color: white;
+            position: absolute;
+            top: 10%;
+            left: 0;
+            transform: translateX(-100%);
+            transition: transform 0.8s ease-in-out;
+            padding: 40px;
+            text-align: center;
+        }
+
+        #about.abt {
+            transform: translateX(0);
+        }
+
+        #about h1 {
+            margin-bottom: 20px;
+        }
+
+        #about p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        #contact {
+            width: 100%;
+            height: 90%;
+            background-color: brown;
+            color: white;
+            position: absolute;
+            top: 10%;
+            left: 0;
+            transform: translateX(-100%);
+            transition: transform 0.8s ease-in-out;
+            padding: 40px;
+            text-align: center;
+        }
+
+        #contact.cnt {
+            transform: translateX(0);
+        }
+
+        #contact h1 {
+            margin-bottom: 20px;
+        }
+
+        #contact p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        #dtl {
+            width: 100%;
+            height: 90%;
+
+            position: fixed;
+            left: 0%;
+            bottom: 0%;
+
+
+            background-color: bisque;
+        }
+
+        .event-detail {
+            width: 400px;
+            height: 400px;
+            position: relative;
+            left: 35%;
+            top: 10%;
+
+            border: 1px solid blue;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .event-detail p {
+            font-size: 30px;
+        }
+
+        .event-detail span {
+            font-weight: bold;
+        }
+
+        .event-detail button {
+            width: 120px;
+            padding: 5px;
+            margin-left: 20px;
+            margin-top: 60px;
+            background-color: aquamarine;
+            border-radius: 5px;
+        }
+
+        .event-detail button:hover {
+            background-color: green;
+        }
+
+        .ca {
+            color: black;
+        }
+
+        .pinfo {
+            font-weight: bold;
+        }
+
+        #bookedevent {
+            width: 100%;
+            height: 90%;
+            background-color: orange;
+            color: white;
+            position: absolute;
+            top: 10%;
+            left: 0;
+            transform: translateX(-100%);
+            transition: transform 0.8s ease-in-out;
+            padding: 40px;
+            text-align: center;
+
+        }
+
+        #bookedevent.bevnt {
+            transform: translateX(0);
+        }
+
+        .event-detail {
+            border-radius: 20px;
+
+        }
+
+        .home {
+             margin-top: 0;
+            width: 100%;
+            height: 90%;
+            background-color: azure;
+            display: flex;
+            background: url(https://image-static.collegedunia.com/public/reviewPhotos/203351/IMG_20220316_212645.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        #section1 {
+
+            width: 50%;
+            height: 50%;
+            text-align: center;
+            margin-left: 20%;
+            margin-top: 10%;
+        }
+
+        #section1 h1 {
+            margin-bottom: 40px;
+
+        }
+
+        #section1 p {
+            font-size: 30px;
+        }
+
+        #section2 {
+            width: 50%;
+
+
+        }
+
+        #profile {
+            width: 300px;
+            height: calc(100vh - 60px);
+            background-color: cornflowerblue;
+            position: fixed;
+            top: 60px;
+            right: 0;
+            transform: translateX(100%);
+            transition: transform 0.8s ease;
+            text-align: center;
+            border-radius: 5px;
+
+
+        }
+
+        #profile.toggle {
+            transform: translateX(0);
+            top: 60px;
+            right: 0;
+
+        }
+
+        #profile button {
+            width: 120px;
+            padding: 10px;
+            margin-top: 20px;
+            background-color: aquamarine;
+            border-radius: 5px;
+            cursor: pointer;
+            border: none;
+            font-size: 16px;
+        }
+
+        #profile button:hover {
+            background-color: green;
+            color: white;
+        }
+
+
+        #fakediv {
+            width: 100%;
+            height: 10%;
+            background-color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <main id="main">
+
+        <div class="header">
+            <div id="logo"></div>
+            <ul id="list">
+
+                <li id="home">Home</li>
+                <li id="allevent">AllEvents</li>
+                <li id="myevent">MyEvents</li>
+                <li id="about-us">About</li>
+
+                <li id="contact-us">Contact us</li>
+                <li id="profile-nav">Profile</li>
+
+
+            </ul>
+        </div>
+        <div id="fakediv"></div>
+        <div class="home">
+            <div id="section1">
+               <h1>Don't miss any collage event.</h1>
+                 <p>Explore events,register easily,and be a part </p>
+                 <p>of every celebration </p>
+                 <p>at MIT collage. </p>
+            </div>
+
+        </div>
+
+        <div id="profile">
+            <i class="fa-solid fa-user" style="font-size:100px; margin:15px;"></i>
+
+            <h1 id="profile-name">Guest</h1>
+            <div>
+                <p id="profile-email"><span class="pinfo">email:</span></p>
+            </div>
+            <button id="logout-btn">Logout</button>
+        </div>
+
+
+        <div id="text-contain">
+            <div id="text">
+                <!-- Dynamic Events -->
+            </div>
+        </div>
+        <div id="bookedevent">
+            <h1>My Booked Events</h1>
+
+        </div>
+
+
+        <div id="about">
+            <h1>About Us</h1>
+           <p>MIT collage is commited to providing quality education</p>
+           <p>along with cultural,technical,and sport activities.</p>
+           <p>we believe that events help student build confidence ,teamwork,</p>
+           <p>and leadership skils.</p>
+        </div>
+
+
+        <div id="contact">
+             <h1>contact Us</h1>
+             <h2><span class="ca">Compus Address</span></h2>
+            <p> NH-58,Bye-Pass Road,Baral Partapur,</p>
+            <p>Meerut-250103</p>
+            <p>ph:+91-9334455661</p>
+             <h2><span class="ca">Admission office</span></h2>
+            <p>Opp.Bazar india,Ashoke Rajpath,near B.N.Collage,</p>
+            <p>Shabzibagh,Patna,Bihar 800004</p>
+            <p>ph:+91-9334455661</p> 
+            <h2><span class="ca">Helpline No.</span></h2>
+            <p>ph:+91-9334455661</p> 
+
+        </div>
+
+    </main>
+    <script>
+        // Initialize Default Events if missing
+        if (!localStorage.getItem("events")) {
+            const defaultEvents = [
+                { id: "freshher", name: "Fresher Party", date: "2026-04-02", guest: "Mr. X", singer: "Arijit", description: "Welcome party." },
+                { id: "farewell", name: "Farewell Party", date: "2026-04-10", guest: "Mr. Y", singer: "Sonu", description: "Goodbye party." },
+                { id: "dandiyanight", name: "Dandiya Night", date: "2026-10-20", guest: "Ms. Z", singer: "Neha", description: "Dance night." },
+                { id: "mridang", name: "Diwali Dhoom", date: "2026-11-01", guest: "Mr. A", singer: "Badshah", description: "Diwali celebration." }
+            ];
+            localStorage.setItem("events", JSON.stringify(defaultEvents));
+        }
+
+        let textDiv = document.getElementById("text");
+        let eventDiv = document.getElementById("text-contain");
+        let bookedEventDiv = document.getElementById("bookedevent");
+        let aboutDiv = document.getElementById("about");
+        let contactDiv = document.getElementById("contact");
+        let profileDiv = document.getElementById("profile");
+
+        // Render Events
+        function renderEvents() {
+            let events = JSON.parse(localStorage.getItem("events") || "[]");
+            textDiv.innerHTML = "";
+            events.forEach(evt => {
+                let btn = document.createElement("button");
+                btn.className = "heading";
+                btn.innerText = evt.name;
+                btn.onclick = () => showEventDetails(evt);
+                textDiv.appendChild(btn);
+            });
+        }
+        renderEvents();
+
+        function showEventDetails(evt) {
+            // Remove existing details if any
+            let oldDtl = document.getElementById("dtl");
+            if (oldDtl) oldDtl.remove();
+
+            let detail = document.createElement("div");
+            detail.id = "dtl";
+            detail.innerHTML = `
+                 <div class="event-detail">
+                     <p><span>EventName:</span> ${evt.name}</p>
+                     <p><span>EventDate:</span> ${evt.date}</p>
+                     <p><span>Guest:</span> ${evt.guest}</p>
+                     <p><span>Singer:</span> ${evt.singer}</p>
+                     <p style="font-size:20px; font-style:italic;">${evt.description}</p>
+                     <button onclick="bookEvent('${evt.id}')" id="book-btn">Book</button>
+                     <button onclick="closeDetails()">Back</button>
+                 </div>
+            `;
+            document.body.appendChild(detail);
+            eventDiv.classList.remove("evnt");
+        }
+
+        function closeDetails() {
+            let dtl = document.getElementById("dtl");
+            if (dtl) dtl.remove();
+            eventDiv.classList.add("evnt");
+        }
+
+        window.bookEvent = function (eventId) {
+            let events = JSON.parse(localStorage.getItem("events") || "[]");
+            let evt = events.find(e => e.id === eventId);
+            if (evt) {
+                localStorage.setItem("selectedEvent", JSON.stringify(evt));
+                window.location.href = "book.html";
+            }
+        };
+
+        window.closeDetails = closeDetails;
+
+        // Navigation Helper
+        function closeAll() {
+            bookedEventDiv.classList.remove("bevnt");
+            bookedEventDiv.innerHTML = "<h1>My Booked Events</h1>"; // Reset to header only
+            aboutDiv.classList.remove("abt");
+            contactDiv.classList.remove("cnt");
+            profileDiv.classList.remove("toggle");
+            closeDetails();
+            eventDiv.classList.remove("evnt"); // Ensure it stays closed
+        }
+
+        document.getElementById("allevent").addEventListener("click", () => {
+            closeAll();
+            eventDiv.classList.add("evnt");
+        });
+
+        document.getElementById("about-us").addEventListener("click", () => {
+            closeAll();
+            aboutDiv.classList.add("abt");
+        });
+
+        document.getElementById("contact-us").addEventListener("click", () => {
+            closeAll();
+            contactDiv.classList.add("cnt");
+        });
+
+        document.getElementById("home").addEventListener("click", () => {
+            closeAll();
+        });
+
+
+        // My Events & QR Code Logic
+        document.getElementById("myevent").addEventListener("click", () => {
+            closeAll();
+            bookedEventDiv.classList.add("bevnt");
+
+            let currentUser = JSON.parse(localStorage.getItem("currentUser"));
+            if (!currentUser) {
+                bookedEventDiv.innerHTML += "<p>Please login to see bookings.</p>";
+                return;
+            }
+
+            let bookings = JSON.parse(localStorage.getItem("bookings") || "[]");
+            let myBookings = bookings.filter(b => b.userEmail === currentUser.email);
+
+            if (myBookings.length === 0) {
+                bookedEventDiv.innerHTML += "<p>No bookings found.</p>";
+            } else {
+                let container = document.createElement("div");
+                container.style.display = "flex";
+                container.style.flexWrap = "wrap";
+                container.style.gap = "20px";
+                container.style.justifyContent = "center";
+                container.style.marginTop = "20px";
+
+                myBookings.forEach(booking => {
+                    let card = document.createElement("div");
+                    card.className = "event-detail";
+                    card.style.height = "auto";
+                    card.style.position = "static";
+
+                    let qrId = "qr-" + booking.bookingId;
+                    card.innerHTML = `
+                        <p><span>Event:</span> ${booking.eventName}</p>
+                        <p><span>Date:</span> ${booking.eventDate || 'N/A'}</p>
+                        <p><span>Booking ID:</span> ${booking.bookingId}</p>
+                        <div id="${qrId}" style="margin: 10px auto; width: 128px; height: 128px;"></div>
+                     `;
+                    container.appendChild(card);
+
+                    // Generate QR
+                    setTimeout(() => {
+                        let qrData = `ID:${booking.bookingId}|User:${booking.userName}|Event:${booking.eventName}`;
+                        new QRCode(document.getElementById(qrId), {
+                            text: qrData,
+                            width: 128,
+                            height: 128,
+                            colorDark: "#000000",
+                            colorLight: "#ffffff",
+                            correctLevel: QRCode.CorrectLevel.H
+                        });
+                    }, 100);
+                });
+                bookedEventDiv.appendChild(container);
+            }
+        });
+        let profilenav = document.getElementById("profile-nav");
+        // Function to update profile info
+        function updateProfileDisplay() {
+            let currentUser = JSON.parse(localStorage.getItem("currentUser"));
+            if (currentUser) {
+                let nameHeader = document.getElementById("profile-name");
+                let emailParagraph = document.getElementById("profile-email");
+
+                if (nameHeader) nameHeader.textContent = currentUser.name + " " + (currentUser.lname || "");
+                if (emailParagraph) emailParagraph.innerHTML = `<span class="pinfo">email:</span> ${currentUser.email}`;
+            }
+        }
+
+        if (profilenav && profileDiv) {
+            profilenav.addEventListener("click", () => {
+                let isOpen = profileDiv.classList.contains("toggle");
+                closeAll();
+                if (!isOpen) {
+                    updateProfileDisplay();
+                    profileDiv.classList.add("toggle");
+                }
+            });
+        }
+
+        // Logout functionality
+        let logoutBtn = document.getElementById("logout-btn");
+        if (logoutBtn) {
+            logoutBtn.addEventListener("click", () => {
+                localStorage.removeItem("currentUser");
+                // Optional: localStorage.clear(); if you want to clear everything
+                window.location.href = "project1.html";
+            })
+        }
+
+
+
+
+    </script>
+</body>
+
+</html>

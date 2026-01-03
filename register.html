@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Regster</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-size: 14px;
+      background-color: bisque;
+     background-image: url("https://mitmeerut.ac.in/media_image/cms_pages/2025_02_06_12_18_15_2008mitmeerut.jpg");
+      text-transform: capitalize;
+    }
+
+    .container {
+      background: rgba(0, 150, 100, .5);
+      width: 500px;
+      padding: 25px;
+      margin: 50px auto 0;
+      box-shadow: 0 0 10px 5px rgba(0, 0, 0, 1);
+      border-radius: 10px;
+    }
+
+    .input-name {
+      width: 90%;
+      position: relative;
+      margin: 20px auto;
+    }
+
+    .lock {
+      padding: 8px 11px;
+    }
+
+    .name {
+      width: 45%;
+      padding: 8px 0 8px 40px;
+    }
+
+    .text-name {
+      width: 90%;
+      padding: 8px 0 8px 40px;
+
+    }
+
+    i {
+      position: absolute;
+      font-size: 18px;
+      color: blue;
+      border-right: 1px solid black;
+    }
+
+    .one {
+      margin-left: 20px;
+    }
+
+    .radio-button {
+      transform: scale(1.5);
+    }
+
+    .label {
+      font-size: 20px;
+    }
+
+    .user {
+      padding: 10px;
+    }
+
+    .button {
+      padding: 10px;
+      cursor: pointer;
+      color: aliceblue;
+      font-size: 15px;
+    }
+
+    .button:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="form-container">
+      <form id="register-form">
+        <div class="input-name">
+          <i class="fa fa-user lock"></i>
+          <input type="text" placeholder=" first name" class="name" required id="name">
+          <i class="fa fa-user lock one"></i>
+          <input type="text" placeholder=" last  name" class="name one" required id="lname">
+        </div>
+        <div class="input-name">
+          <i class="fa fa-envelope lock"></i>
+          <input type="text" placeholder=" email" class=" text-name" required id="email">
+        </div>
+        <div class="input-name">
+          <i class="fa fa-unlock-alt lock"></i>
+          <input type="text" placeholder="password" required class="text-name" id="password">
+        </div>
+        <div class="input-name">
+          <i class="fa fa-unlock-alt lock"></i>
+          <input type="text" placeholder=" confirm password" required class="text-name" id="confirm_password">
+        </div>
+        <div class="input-name">
+          <input type="radio" class="radio-button" id="male" name="r">
+          <label class="label">male</label>
+          <input type="radio" class="radio-button" id="female" name="r">
+          <label class="label">female</label>
+        </div>
+        <div class="input-name">
+          <select class="user" id="usertype" required>
+            <option value="student"> Student </option>
+            <option value="teacher"> Teacher </option>
+          </select>
+        </div>
+        <div class="input-name">
+          <input type="checkbox" class="check-button">
+          <label>I accept the term and condition</label>
+        </div>
+        <div class="input-name">
+
+
+          <button type="submit" id="register-button">Register</button>
+
+
+
+        </div>
+      </form>
+    </div>
+  </div>
+  <script>
+
+    let form = document.getElementById("register-form")
+    let ptrnemail = /^[a-z-A-Z][a-z0-9._]*@[a-zA-Z]+\.[a-zA-Z]{2,}$/;
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      let name = document.getElementById("name").value
+      let lname = document.getElementById("lname").value
+
+      let email = document.getElementById("email").value
+      let password = document.getElementById("password").value
+      let confirm_password = document.getElementById("confirm_password").value
+      let usertype = document.getElementById("usertype").value
+
+      if (!ptrnemail.test(email)) {
+        alert("please enter valid emmail")
+        return;
+      }
+      if (password !== confirm_password) {
+        alert("password not matched")
+        return;
+      }
+
+
+
+      let newuser = {
+        name: name,
+        lname: lname,
+        email: email,
+        password: password,
+        confirm_password: confirm_password,
+        usertype: usertype
+      }
+
+      let userData = JSON.parse(localStorage.getItem("user") || "[]")
+      userData.push(newuser);
+      localStorage.setItem("user", JSON.stringify(userData))
+      alert("registration successfull")
+      setTimeout(() => {
+
+        if (newuser.usertype === "student") {
+          localStorage.setItem("currentUser", JSON.stringify(newuser));
+          window.location.href = "std.html"
+        }
+        else {
+          localStorage.setItem("currentUser", JSON.stringify(newuser));
+          window.location.href = "teacher.html"
+        }
+      }, 1000)
+
+
+
+
+
+
+
+    })
+
+
+
+
+  </script>
+</body>
+
+</html>

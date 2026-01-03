@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>teacher</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body,
+        html {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            text-transform: capitalize;
+            width: 100%;
+            height: 100%;
+
+        }
+
+        #main {
+            width: 100%;
+            height: 100vh;
+            position: relative;
+
+        }
+
+        .header {
+            width: 100%;
+            height: 10%;
+            background-color: aquamarine;
+            display: flex;
+            align-items: center;
+            position: fixed;
+        }
+
+        #fakediv {
+            width: 100%;
+            height: 10%;
+            background-color: white;
+        }
+
+        #logo {
+
+                    width: 100px;
+            height: 60px;
+            border-radius: 10px;
+            background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzeacGA5efvr25z6rR_JyZ3pgrswGDmteedQ&s");
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+
+        ul {
+            display: flex;
+            list-style-type: none;
+            color: black;
+            gap: 120px;
+        }
+
+        ul li:first-child {
+            margin-left: 150px;
+        }
+
+        ul li {
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        ul li:hover {
+            background-color: antiquewhite;
+        }
+
+        #text-contain {
+            width: 100%;
+            height: 90%;
+            background-color: brown;
+            color: white;
+            position: absolute;
+            top: 10%;
+            left: 0;
+            transform: translateX(-100%);
+            transition: transform 0.8s ease-in-out;
+        }
+
+        #text-contain.evnt {
+            transform: translateX(0);
+        }
+
+        #text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 70vh;
+            gap: 10px;
+        }
+
+        .heading {
+            padding: 10px;
+            margin: 10px;
+            font-size: larger;
+            width: 300px;
+            border-radius: 20px;
+        }
+
+        .heading:hover {
+            background-color: yellow;
+        }
+
+        #homepage {
+            width: 100%;
+            height: 90%;
+             background-image: url("https://mitmeerut.ac.in/media_image/cms_pages/2025_02_06_12_18_15_2008mitmeerut.jpg");
+        }
+
+        #contact {
+            width: 100%;
+            height: 90%;
+            background-color: brown;
+            color: white;
+            position: absolute;
+            top: 10%;
+            left: 0;
+            transform: translateX(-100%);
+            transition: transform 0.8s ease-in-out;
+            padding: 40px;
+            text-align: center;
+        }
+
+        #contact.cnt {
+            transform: translateX(0);
+        }
+
+        #contact h1 {
+            margin-bottom: 20px;
+        }
+
+        #contact p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        #profile {
+            width: 300px;
+            height: calc(100vh - 60px);
+            background-color: cornflowerblue;
+            position: fixed;
+            top: 60px;
+            right: 0;
+            transform: translateX(100%);
+            transition: transform 0.8s ease;
+            text-align: center;
+            border-radius: 5px;
+            z-index: 1000;
+        }
+
+        #profile.toggle {
+            transform: translateX(0);
+            top: 60px;
+            right: 0;
+        }
+
+        #profile button {
+            width: 120px;
+            padding: 10px;
+            margin-top: 20px;
+            background-color: aquamarine;
+            border-radius: 5px;
+            cursor: pointer;
+            border: none;
+            font-size: 16px;
+        }
+
+        #profile button:hover {
+            background-color: green;
+            color: white;
+        }
+
+        .pinfo {
+            font-weight: bold;
+        }
+         #delete-box {
+            width: 100%;
+            height: 90%;
+            background-color: brown;
+            color: white;
+            position: absolute;
+            top: 10%;
+            left: 0;
+            transform: translateX(-100%);
+            transition: transform 0.8s ease-in-out;
+            padding: 40px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+         }
+          #delete-box.dell{
+             transform: translateX(0);
+         }
+         #dlt-contain{
+            width: 400px;
+            height: 400px;
+            background-color: yellowgreen;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            border-radius: 10px;
+         }
+         #dltbtn{
+            padding: 10px;
+            border-radius: 5px;
+            width: 100%;
+            margin-top: 10px;
+
+         }
+         #dtl-contain h1{
+            font-size: 40px;
+            margin-bottom: 50px;
+         }
+         #dtl-contain input{
+            padding: 10px;
+            margin-bottom: 20px;
+         }
+
+    </style>
+</head>
+
+<body>
+    <div id="main">
+        <div class="header">
+            <div id="logo"></div>
+            <ul id="list">
+
+                <li id="home">Home</li>
+                <li id="allevent">AllEvents</li>
+                <li id="myevent">AddEvents</li>
+                 <li id="del">DeleteEvent</li>
+                <li id="contact-us">Contact us</li>
+                <li id="profile-nav">Profile</li>
+
+
+            </ul>
+        </div>
+
+        <div id="fakediv"> fake</div>
+        <div id="homepage"></div>
+
+        <div id="contact">
+            <h1>contact Us</h1>
+             <h2><span class="ca">Compus Address</span></h2>
+            <p> NH-58,Bye-Pass Road,Baral Partapur,</p>
+            <p>Meerut-250103</p>
+            <p>ph:+91-9334455661</p>
+             <h2><span class="ca">Admission office</span></h2>
+            <p>Opp.Bazar india,Ashoke Rajpath,near B.N.Collage,</p>
+            <p>Shabzibagh,Patna,Bihar 800004</p>
+            <p>ph:+91-9334455661</p> 
+            <h2><span class="ca">Helpline No.</span></h2>
+            <p>ph:+91-9334455661</p> 
+            
+
+        </div>
+        <div id="profile">
+            <i class="fa fa-user" style="font-size:100px; margin:15px;"></i>
+            <h1 id="profile-name">Guest</h1>
+            <div>
+                <p id="profile-email"><span class="pinfo">email:</span></p>
+            </div>
+            <button id="logout-btn">Logout</button>
+        </div>
+        <div id="text-contain">
+            <div id="text">
+                <!-- Dynamic Events will be loaded here -->
+            </div>
+        </div>
+         <div id="delete-box">
+                 <div id="dlt-contain">
+                    <h1>DeleteEvent</h1>
+                    <input id="dltinput" type="text" placeholder="Enter Event Name ">
+                    <button id="dltbtn" onclick="deleteevent()">Delete</button>
+                 </div>
+        </div>
+
+        <div id="add-event-section"
+            style="width: 100%; height: 90%; background-color: lightblue; position: absolute; top: 10%; left: 0; transform: translateX(-100%); transition: transform 0.8s ease-in-out; display: flex; flex-direction: column; align-items: center; justify-content: center; overflow-y: auto;">
+            <h1>Add New Event</h1>
+            <form id="add-event-form"
+                style="display: flex; flex-direction: column; gap: 15px; width: 300px; background: rgba(255,255,255,0.5); padding: 20px; border-radius: 10px;">
+                <input type="text" id="event-name" placeholder="Event Name" required style="padding: 10px;">
+                <input type="date" id="event-date" required style="padding: 10px;">
+                <input type="text" id="event-guest" placeholder="Chief Guest" required style="padding: 10px;">
+                <input type="text" id="event-singer" placeholder="Singer" required style="padding: 10px;">
+                <textarea id="event-desc" placeholder="Description" style="padding: 10px;"></textarea>
+                <button type="submit"
+                    style="padding: 10px; background-color: blue; color: white; border: none; cursor: pointer;">Add
+                    Event</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Default Events
+        if (!localStorage.getItem("events")) {
+            const defaultEvents = [
+                { id: "freshher", name: "Fresher Party", date: "2026-04-02", guest: "Mr. X", singer: "Arijit", description: "Welcome party for new students." },
+                { id: "farewell", name: "Farewell Party", date: "2026-04-10", guest: "Mr. Y", singer: "Sonu", description: "Goodbye party for seniors." },
+                { id: "dandiyanight", name: "Dandiya Night", date: "2026-10-20", guest: "Ms. Z", singer: "Neha", description: "Dance night." },
+                { id: "mridang", name: "Diwali Dhoom", date: "2026-11-01", guest: "Mr. A", singer: "Badshah", description: "Diwali celebration." }
+            ];
+            localStorage.setItem("events", JSON.stringify(defaultEvents));
+        }
+
+        // DOM Elements
+        let textDiv = document.getElementById("text");
+        let eventBtn = document.getElementById("allevent");
+        let eventdiv = document.getElementById("text-contain");
+        let addEventBtn = document.getElementById("myevent"); // Assuming "AddEvents" uses this ID
+        let addEventSection = document.getElementById("add-event-section");
+        let contactBtn = document.getElementById("contact-us");
+        let contactdiv = document.getElementById("contact");
+        let home = document.getElementById("home");
+        let profilenav = document.getElementById("profile-nav");
+        let profilediv = document.getElementById("profile");
+
+        // Render Events
+        function renderEvents() {
+            let events = JSON.parse(localStorage.getItem("events") || "[]");
+            textDiv.innerHTML = "";
+            events.forEach(evt => {
+                let btn = document.createElement("button");
+                btn.className = "heading";
+                btn.innerText = evt.name;
+                btn.onclick = () => alert(`Event: ${evt.name}\nDate: ${evt.date}\nGuest: ${evt.guest}`);
+                textDiv.appendChild(btn);
+            });
+        }
+        renderEvents();
+
+        // Add Event Logic
+        document.getElementById("add-event-form").addEventListener("submit", (e) => {
+            e.preventDefault();
+            let newEvent = {
+                id: Date.now().toString(),
+                name: document.getElementById("event-name").value.trim(),
+                date: document.getElementById("event-date").value,
+                guest: document.getElementById("event-guest").value,
+                singer: document.getElementById("event-singer").value,
+                description: document.getElementById("event-desc").value
+            };
+            let events = JSON.parse(localStorage.getItem("events") || "[]");
+            events.push(newEvent);
+            localStorage.setItem("events", JSON.stringify(events));
+            alert("Event Added Successfully!");
+            document.getElementById("add-event-form").reset();
+            renderEvents();
+        });
+
+        // Navigation
+        function closeAll() {
+            if (contactdiv) contactdiv.classList.remove("cnt");
+            if (eventdiv) eventdiv.classList.remove("evnt");
+            if (profilediv) profilediv.classList.remove("toggle");
+            if (addEventSection) addEventSection.style.transform = "translateX(-100%)";
+             if (deldiv) deldiv.classList.remove("dell"); // ✅ IMPORTANT
+        }
+
+        if (eventBtn) {
+            eventBtn.addEventListener("click", () => {
+                closeAll();
+                eventdiv.classList.add("evnt");
+            });
+        }
+
+        if (addEventBtn) {
+            addEventBtn.addEventListener("click", () => {
+                closeAll();
+                addEventSection.style.transform = "translateX(0)";
+            });
+        }
+
+        if (contactBtn) {
+            contactBtn.addEventListener("click", () => {
+                closeAll();
+                contactdiv.classList.add("cnt");
+            });
+        }
+
+        if (home) {
+            home.addEventListener("click", () => {
+                closeAll();
+            });
+        }
+
+        // Profile Logic
+        function updateProfileDisplay() {
+            let currentUser = JSON.parse(localStorage.getItem("currentUser"));
+            if (currentUser) {
+                let nameHeader = document.getElementById("profile-name");
+                let emailParagraph = document.getElementById("profile-email");
+
+                if (nameHeader) nameHeader.textContent = currentUser.name + " " + (currentUser.lname || "");
+                if (emailParagraph) emailParagraph.innerHTML = `<span class="pinfo">email:</span> ${currentUser.email}`;
+            }
+        }
+
+        if (profilenav && profilediv) {
+            profilenav.addEventListener("click", () => {
+                let isOpen = profilediv.classList.contains("toggle");
+                closeAll();
+                if (!isOpen) {
+                    updateProfileDisplay();
+                    profilediv.classList.add("toggle");
+                }
+            })
+        }
+
+        let logoutBtn = document.getElementById("logout-btn");
+        if (logoutBtn) {
+            logoutBtn.addEventListener("click", () => {
+                localStorage.removeItem("currentUser");
+                window.location.href = "project1.html";
+            })
+        }
+
+         let del=document.getElementById("del")
+        let deldiv=document.getElementById("delete-box")
+        del.addEventListener("click", () => {
+    closeAll();                // ✅ pehle sab band
+    deldiv.classList.add("dell"); // ✅ phir delete box open
+});
+
+     function deleteevent() {
+    let inputname = document.getElementById("dltinput").value.trim();
+
+    if (inputname === "") {
+        alert("Please enter event name");
+        return;
+    }
+
+    let events = JSON.parse(localStorage.getItem("events")) || [];
+    let initialLength = events.length;
+
+    let updatedEvents = events.filter(event =>
+        event.name.toLowerCase() !== inputname.toLowerCase()
+    );
+
+    if (updatedEvents.length === initialLength) {
+        alert("Event not found");
+    } else {
+        localStorage.setItem("events", JSON.stringify(updatedEvents));
+        alert("Event deleted successfully");
+        document.getElementById("dltinput").value = "";
+        renderEvents(); // ✅ list refresh
+    }
+}
+    </script>
+</body>
+
+</html>
